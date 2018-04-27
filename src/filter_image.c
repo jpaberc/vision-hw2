@@ -54,7 +54,6 @@ image convolve_image(image im, image filter, int preserve)
                             }
                         }
                     }
-                    // q = (q > 0.0) ? ((q < 1.0) ? q : 1.0) : 0.0;
                     set_pixel(cim,x,y,0,q);
                 }
             }
@@ -71,7 +70,6 @@ image convolve_image(image im, image filter, int preserve)
                                 q += filter_val*pixel_val;
                             }
                         }
-                        // q = (q > 0.0) ? ((q < 1.0) ? q : 1.0) : 0.0;
                         set_pixel(cim,x,y,c,q);
                     }
                 }
@@ -91,8 +89,6 @@ image convolve_image(image im, image filter, int preserve)
                             }
                         }
                     }
-                    // q = q / im.c;
-                    // q = (q > 0.0) ? ((q < 1.0) ? q : 1.0) : 0.0;
                     set_pixel(cim,x,y,0,q);
                 }
             }
@@ -115,40 +111,6 @@ image convolve_image(image im, image filter, int preserve)
             }
         }
     }
-
-    // for (int x = 0; x < cim.w; x++) {
-    //     for (int y = 0; y < cim.h; y++) {
-    //         if (preserve == 1) {
-    //             for (int c = 0; c < cim.c; c++) {
-    //                 int fc = (filter.c > 1) ? c : 0;
-    //                 float q = 0;
-    //                 for (int fx = 0; fx < filter.w; fx++) {
-    //                     for (int fy = 0; fy < filter.h; fy++) {
-
-    //                         q += get_pixel(filter,fx,fy,fc) * get_pixel(im,x-(filter.w/2)+fx,y-(filter.h/2)+fy,c);
-    //                     }
-    //                 }
-    //                 set_pixel(cim,x,y,c,q);
-    //             }
-    //         } else {
-    //             float q = 0;
-    //             for (int c = 0; c < im.c; c++) {
-    //                 int fc = (filter.c > 1) ? c : 0;
-    //                 for (int fx = 0; fx < filter.w; fx++) {
-    //                     for (int fy = 0; fy < filter.h; fy++) {
-    //                         q += get_pixel(filter,fx,fy,fc) * get_pixel(im,x-(filter.w/2)+fx,y-(filter.h/2)+fy,c);
-    //                     }
-    //                 }
-    //             }
-    //             if (filter.c == im.c) {
-    //                 set_pixel(cim,x,y,0,q);
-    //             }
-    //             else {
-    //                 set_pixel(cim,x,y,0,q/im.c);
-    //             }
-    //         }
-    //     }
-    // }
 
     return cim;
 }
