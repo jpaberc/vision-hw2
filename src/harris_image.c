@@ -238,7 +238,7 @@ descriptor *harris_corner_detector(image im, float sigma, float thresh, int nms,
     for (int y = 0; y < im.h; y++) {
         for (int x = 0; x < im.w; x++) {
             if (get_pixel(Rnms,x,y,0) > thresh) {
-                d[count] = describe_index(im,y*im.w+x);
+                d[count] = describe_index(im,(y*im.w)+x);
                 count += 1;
             }
         }
